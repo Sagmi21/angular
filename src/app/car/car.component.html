@@ -1,0 +1,26 @@
+<div class="car-container" *ngIf="formCar" [formGroup]="formCar">
+  <h1>{{ title }}</h1>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Marca</mat-label>
+    <input matInput formControlName="brand" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Modelo</mat-label>
+    <input matInput formControlName="model" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Año</mat-label>
+    <input type="number" matInput formControlName="year" />
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="formCar.invalid"
+    (click)="save()">
+    Guardar
+</button>
+</div>

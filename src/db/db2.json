@@ -1,0 +1,40 @@
+{
+  "cars": [
+    {
+      "brand": "Toyota",
+      "model": "Yaris",
+      "year": 2022,
+      "id": 1
+    },
+    {
+      "brand": "Ford",
+      "model": "Mustang",
+      "year": 2017,
+      "id": 3
+    },
+    {
+      "brand": "Chevrolet",
+      "model": "Cavallier",
+      "year": 2020,
+      "id": 4
+    },
+    {
+      "brand": "Honda",
+      "model": "Civic",
+      "year": 2022,
+      "id": 5
+    },
+    {
+      "brand": "VW",
+      "model": "Jetta",
+      "year": 2022,
+      "id": 6
+    },
+    {
+      "brand": "Toyota",
+      "model": "Corolla",
+      "year": 2010,
+      "id": 7
+    }
+  ]
+}

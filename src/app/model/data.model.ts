@@ -4,3 +4,10 @@ export interface Computer {
   model: string;
   year: number;
 }
+
+export interface Car {
+  id?: number;
+  brand: string;
+  model: string;
+  year: number;
+}

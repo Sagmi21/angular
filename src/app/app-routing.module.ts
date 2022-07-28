@@ -15,6 +15,12 @@ const routes: Routes = [
       import ('./home/home.module').then((m) => m.HomeModule),
   },
   {
+    path: 'objects',
+    canActivate: [GuardService],
+    loadChildren: () =>
+      import ('./objects/objects.module').then((m) => m.ObjectsModule),
+  },
+  {
     path: '**',
     redirectTo: '/login',
   },

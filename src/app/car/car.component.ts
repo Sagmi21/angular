@@ -1,29 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ComputerService } from '../api/computer.service';
-import { Computer } from '../model/data.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CarService } from '../api/car.service';
+import { Car } from '../model/data.model';
 import { FeedbackService } from '../services/feedback.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-computer',
-  templateUrl: './computer.component.html',
-  styleUrls: ['./computer.component.scss']
+  selector: 'app-car',
+  templateUrl: './car.component.html',
+  styleUrls: ['./car.component.scss']
 })
-export class ComputerComponent implements OnInit {
+export class CarComponent implements OnInit {
   title = 'Crear elemento';
   id?: number;
-  formComputer: FormGroup | undefined;
+  formCar : FormGroup | undefined;
 
   constructor(
     private fb: FormBuilder,
-    private computerSvc: ComputerService,
+    private carSvc: CarService,
     private feedback: FeedbackService,
     private router: Router,
-    private activeRoute: ActivatedRoute,
-    ) {
-    this.formComputer = this.fb.group({
+    private activeRoute: ActivatedRoute
+  ) {
+    this.formCar = this.fb.group({
       brand: ['', Validators.required],
       model: ['', Validators.required],
       year: ['', Validators.required],
@@ -40,30 +39,30 @@ export class ComputerComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   getData() {
     this.feedback.loading.next(true);
-    this.computerSvc.getComputer(this.id!).subscribe({
+    this.carSvc.getCar(this.id!).subscribe({
       next: (item) => {
         this.feedback.loading.next(false);
-        this.formComputer?.patchValue(item);
+        this.formCar?.patchValue(item);
       },
       error: () => {
         this.feedback.loading.next(false);
-        this.feedback.showMessage('Lo sentimos, no se pudo cargar el elemento');
+        this.feedback.showMessage('Lo sentimos, no se pudo guardar el elemento');
       },
     });
   }
 
   save() {
-    const dataForm = this.formComputer?.value as Computer;
+    const dataForm = this.formCar?.value as Car;
 
     this.feedback.loading.next(true);
-    this.computerSvc.saveComputer(dataForm, this.id).subscribe({
+    this.carSvc.saveCar(dataForm, this.id).subscribe({
       next: () => {
         this.feedback.loading.next(false);
-        this.router.navigate(['home']);
+        this.router.navigate(['objects']);
       },
       error: () => {
         this.feedback.loading.next(false);

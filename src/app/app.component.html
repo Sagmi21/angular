@@ -1,6 +1,8 @@
 <mat-toolbar color="primary">
   <span>Curso Angular 2022</span>
   <span class="spacer"></span>
+  <button mat-raised-button [routerLink]="'home'">Computers</button>
+  <button mat-raised-button [routerLink]="'objects'">Cars</button>
   <button mat-icon-button (click)="logout()" *ngIf="isLogged">
     <mat-icon>logout</mat-icon>
   </button>
